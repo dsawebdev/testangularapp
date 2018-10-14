@@ -1,5 +1,12 @@
+<button class="btn btn-dark mb-3" (click)="showUserForm = !showSuerForm">Add User</button>
+<div *ngIf="showUserForm" class="card card-body mb-3">
+  <h2>Add User</h2>
+</div>
+
 <h2>Users</h2>
+
 <button (click)="addUser({firstName: 'Mary', lastName: 'Jones', isActive: true})" [disabled]="!enableAdd" class="btn btn-block mb-3">Add New Users</button>
+
 <ul *ngIf="loaded && users?.length" class="list-unstyled">
   <li *ngFor="let user of users" class="card card-body mb-2" [class.bg-light]="user.isActive">
     <h3>{{ user.firstName }} {{ user.lastName }}
