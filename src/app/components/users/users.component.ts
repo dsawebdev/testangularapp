@@ -9,13 +9,14 @@ import { User } from 'src/app/models/User';
 
 export class UsersComponent implements OnInit {
   users: User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = true;
+  enableAdd: Boolean = true;
 
   constructor() { }
 
   ngOnInit() {
-    
+
       this.users = [
         {
           firstName: 'John',
@@ -25,7 +26,9 @@ export class UsersComponent implements OnInit {
             street: '111 East St',
             city: 'Athens',
             state: 'Georgia'
-          }
+          },
+          isActive: true,
+          registered: new Date('10/01/2018 09:34:00')
         },
         {
           firstName: 'Devon',
@@ -35,8 +38,10 @@ export class UsersComponent implements OnInit {
             street: '111 South St',
             city: 'Atlanta',
             state: 'Georgia'
-          }
-        }, 
+          },
+          isActive: false,
+          registered: new Date('10/04/2016 12:19:00')
+        },
         {
           firstName: 'Courtney',
           lastName: 'Palette',
@@ -45,19 +50,23 @@ export class UsersComponent implements OnInit {
             street: '111 North St',
             city: 'Commerce',
             state: 'Georgia'
-          }
+          },
+          isActive: true,
+          registered: new Date('12/24/2015 03:44:00')
         }
       ];
 
-    this.addUser({
-      firstName: 'Adgell',
-      lastName: 'Palette'
-    });
+      this.loaded = true;
 
   }
 
   addUser(user: User) {
     this.users.push(user);
+  }
+
+  fireEvent(e) {
+    // console.log('Button Clicked');
+    console.log(e.type);
   }
 
 }
